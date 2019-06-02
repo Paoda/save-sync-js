@@ -11,6 +11,7 @@
     "app": "electron ."
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.2",
     "electron": "^5.0.2"
   }
 }
