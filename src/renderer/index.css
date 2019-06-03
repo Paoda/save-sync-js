@@ -1,7 +1,7 @@
 .checkcont {
     text-align: center;
     font-size: 200px;
-    color: lightgreen;
+    color: lightgreen
 }
 
 h1 {
@@ -11,9 +11,15 @@ h1 {
 .button {
     height: 100px;
     width: 150px;
-    background-color: black;
+    background-color: #2c74e8;
     color: white;
     text-align: center;
     border: none;
     font-size: 24pt;
+}
+
+.buttoncontainer {
+    display: flex;
+    justify-content: space-around;
+
 }
