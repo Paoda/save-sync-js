@@ -58,4 +58,4 @@ class Monitor {
   }
 }
 
-const monitor = new Monitor(3);
+const monitor = new Monitor(parseFloat(process.argv[2]));
