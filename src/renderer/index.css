@@ -8,9 +8,15 @@
     --cross-color: darkred;
 }
 
+
+@font-face {
+    font-family: "OpenSans";
+    src: url("../assets/fonts/OpenSans-Regular.ttf") format("truetype");
+}
+
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "OpenSans";
 
 }
 
