@@ -1,6 +1,6 @@
 {
   "name": "save-sync-js",
-  "version": "2019.06.2",
+  "version": "2019.06.4",
   "description": "Save Sync but with Electron",
   "main": "./src/main/index.js",
   "repository": "git@github.com:Paoda/save-sync-js.git",
@@ -14,6 +14,6 @@
     "@fortawesome/fontawesome-free": "^5.8.2",
     "commander": "^2.20.0",
     "electron": "^5.0.2",
-    "electron-webpack": "^2.6.2"
+    "electron-reload": "^1.4.0"
   }
 }

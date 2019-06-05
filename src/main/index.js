@@ -1,4 +1,14 @@
+'use strict';
+const path = require('path');
 const { app, BrowserWindow } = require('electron')
+
+const projectPath = path.join(__dirname, '../..');
+const electronPath = path.join(projectPath, 'node_modules', 'node_modules', '.bin', `electron${(require('os').platform() == 'win32') ? '.cmd' : ''}`);
+
+require('electron-reload')(projectPath, {
+  electron: path.join(projectPath, 'node_modules', '.bin', `electron${(require('os').platform() == 'win32') ? '.cmd' : ''}`)
+});
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

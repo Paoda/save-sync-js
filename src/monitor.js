@@ -50,9 +50,6 @@ class Monitor {
         await this.sleep(this.interval);
       }
     } catch(e) { throw e; }
-
-
-
   }
 }
 
