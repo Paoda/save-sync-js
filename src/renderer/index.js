@@ -18,16 +18,15 @@ const createHeaderButtons = () =>  {
   }
 }
 
-
 const connectButtons = () => {
-  const monitorBtn = document.querySelector('div.button#monitor');
-  const directoryBtn = document.querySelector('div.button#directories');
-  const settingsBtn = document.querySelector('div.button#settings');
-
+  const monitorBtn = document.querySelector('button#monitor');
+  const directoryBtn = document.querySelector('button#directories');
+  const settingsBtn = document.querySelector('button#settings');
+  
   console.log(monitorBtn);
   console.log(directoryBtn);
   console.log(settingsBtn);
-
+  connectModals();
 }
 
 const connectModals = () => {
@@ -46,5 +45,5 @@ const connectModals = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   createHeaderButtons();
-  connectModals();
+  connectButtons();
 }, false)
