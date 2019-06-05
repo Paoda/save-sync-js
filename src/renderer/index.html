@@ -7,23 +7,29 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <header>
-      <div class="title"><span>Save Sync</span></div>
-      <div class="window-icons">
-        <i class="fas fa-window-minimize"></i>
-        <i class="fas fa-window-close"></i>
+    <div class="app">
+      <header>
+        <div class="title"><span>Save Sync</span></div>
+        <div class="window-icons">
+          <i class="fas fa-window-minimize"></i>
+          <i class="fas fa-window-close"></i>
+        </div>
+      </header>
+      <div class="checkcont"> <i class="fas fa-check"></i>
+        <h1>Save Synced!</h1>
       </div>
-    </header>
-    <div class="checkcont"> <i class="fas fa-check"></i>
-      <h1>Save Synced!</h1>
+      <div class="buttoncontainer">
+        <button class="button" id="monitor">Start Monitor</button>
+        <button class="button" id="directories">Tracked Directories</button>
+        <button class="button" id="settings">Settings</button>
+      </div>
     </div>
-    <div class="buttoncontainer">
-      <button class="button" id="start-monitor">Start Monitor</button>
-      <button class="button" id="add-dir">Add Directory</button>
-      <button class="button" id="settings">Settings</button>
-    </div>
+
+    <div class="modal" id="directory-modal"></div>
+    <div class="modal" id="settings-modal"></div>
   
     <!-- Javascript -->
+    <script src="components/modal.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
