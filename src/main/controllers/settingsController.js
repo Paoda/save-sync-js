@@ -13,17 +13,17 @@ class SettingsController {
     let existed = false; 
 
     this.path = this.appdir + this.slash + 'save-sync-js';
-    this.pathFile = path + this.slash + 'settings.json';
+    this.pathFile = this.path + this.slash + 'settings.json';
 
-     if (fs.existsSync(path)) {
+     if (fs.existsSync(this.path)) {
        // Folder Exists. Check for Config file.
-        if (!fs.existsSync(pathFile)) { //If it doesn't exist
-          fs.writeFileSync(pathFile, JSON.stringify({}));
+        if (!fs.existsSync(this.pathFile)) { //If it doesn't exist
+          fs.writeFileSync(this.pathFile, JSON.stringify({}));
         } else existed = true;
      } else {
        // Folder doesn't exist. Create Folder and File.
-       fs.mkdirSync(path);
-       fs.writeFileSync(pathFile);
+       fs.mkdirSync(this.path);
+       fs.writeFileSync(this.pathFile, JSON.stringify({}));
      }
 
      return existed;
