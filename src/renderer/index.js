@@ -20,7 +20,7 @@ const createHeaderButtons = () =>  {
 const createBodyButtons = () => {
   const monitorBtn = document.querySelector();
   const dirBtn = document.querySelector();
-  const settingsBtn = document.querySelector()
+  const settingsBtn = document.querySelector();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

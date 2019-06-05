@@ -1,12 +1,15 @@
 const fs = require('fs');
+const path = require('path');
 const SettingsController = require('./settingsController');
 const settings = new SettingsController();
-
-
 
 class SaveController {
   constructor() {
     const canLoadData = this._createSavePath();
+
+    this.trackedSaves = null;
+
+    if (canLoadData) this.trackedSaves = this.getReferences();
   }
 
   add(path) {
@@ -23,10 +26,9 @@ class SaveController {
     // return the relevant information
   }
 
-  getAll() {
-    // Get all save references
-     
-    // Essentially just return saves.json
+  getReferences() {
+    const path = this.saveClonePath;
+    return JSON.parse(fs.readFileSync(this.saveCloneFile, { encoding: 'utf8' }));
   }
 
   update(path){
@@ -41,6 +43,26 @@ class SaveController {
     // Deletes the clone folder, and then its reference in saves.json
   }
 
+  _crawl(path) {
+    return new Promise((res, rej) => {
+      let files = fs.readdir(path, (err, files) => {
+        if (err) rej(err);
+
+        Promise.all(files.map(file => {
+          return new Promise((fres, frej) => {
+            const fpath = path.join(dir, file);
+            fs.stat(fpath, (err, stat) => {
+              if (err) frej(err);
+
+              if (stat.isDirectory()) this._crawl(fpath).then(fres);
+              else if (stat.isFile()) fres(fpath);
+            })
+          })
+        }))
+      })
+    })
+    
+  }
 
   _createSavePath() {
     let existed = false;
