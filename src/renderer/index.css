@@ -1,18 +1,32 @@
 :root {
-    --main-bg-color: #2c74e8
+    --main-bg-color: #2c74e8;
+    --main-bg-hover-color: #1966e2;
+    --main-bg-text-color: #ffffff;
+    --mainbg-text-hover-color: #f2f2f2;
+    --white-background: #ffffff;
+    --checkmark-color: lightgreen;
+    --cross-color: darkred;
 }
+
 body {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: var(--white-background);
+
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
     width: 100%;
     height: 30px;
     background-color: var(--main-bg-color);
     display: flex;
     flex-flow: wrap;
 }
-
 
 header div.window-icons {
     display: flex;
@@ -23,7 +37,9 @@ header div.window-icons {
 
 header div.window-icons i:hover {
     cursor: pointer;
+    color: var(--mainbg-text-hover-color);
 }
+
 header div.window-icons i.fa-window-close {
     margin: 0 0.5em 0 0.5em;
 }
@@ -32,33 +48,60 @@ header div {
     flex: 0 0 50%;
 }
 
+header div.title {
+    display: flex;
+    color: var(--main-bg-text-color);
+    
+}
+
+header div.title span {
+    padding-left: 1em;
+    align-self: center;
+}
+
 header div .fas {
-    color: white;
+    -webkit-app-region: no-drag;
+    color: var(--main-bg-text-color);
     font-size: 1em;
 }
 
 .checkcont {
-    text-align: center;
-    font-size: 200px;
-    color: lightgreen
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 
-h1 {
-    text-align:center;
+.checkcont i {
+    color: var(--checkmark-color);
+    font-size: 3em;
+    font-size: 15em;
+}
+
+.checkcont h1 {
+    margin: 0;
+    font-size: 3em;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: var(--main-bg-hover-color);
 }
 
 .button {
-    height: 100px;
-    width: 150px;
+    height: 5em;
+    width: 10em;
     background-color: var(--main-bg-color);
-    color: white;
+    color: var(--main-bg-text-color);
     text-align: center;
     border: none;
-    font-size: 24pt;
+    font-size: 12pt;
 }
 
 .buttoncontainer {
     display: flex;
     justify-content: space-around;
-
+    /* align-items: center; */
+    height: 7em;
 }
