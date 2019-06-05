@@ -10,7 +10,7 @@ class Monitor {
 
       // Confirm that nothign is being written to the files
       // Zip the current files and move htem to a folder where 
-      //they can either be uploaded automatically or manually
+      // they can either be uploaded automatically or manually
 
       const waitUntilReady = async () => {
         while (this.inProgress) {
@@ -27,8 +27,6 @@ class Monitor {
 
     process.on('SIGINT', handleSuicide);
     process.on('SIGTERM', handleSuicide)
-
-    this.run();
   }
 
   sleep(sec) {
@@ -59,3 +57,4 @@ class Monitor {
 }
 
 const monitor = new Monitor(parseFloat(process.argv[2]));
+monitor.run();
