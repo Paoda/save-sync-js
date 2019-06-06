@@ -4,8 +4,6 @@ class Modal {
     this.displayed = false;
 
     this.ref.onclick = e => {
-      console.log(e);
-      
       if (this.displayed && e.target.className === 'modal') this.hide();
     }
   }

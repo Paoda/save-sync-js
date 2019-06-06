@@ -147,10 +147,31 @@ div.modal-background {
     background-color: var(--white-background);
     height: 30em;
     width: 35em;
-
     border-radius: 1em;
+
+    display: flex;
+    flex-direction: column;
 }
 
 div.modal-background h3 {
+    margin: 0.5em 0 0.5em 1em;
+}
+
+
+div.modal-background div#directories-list {
+    background-color: #f2f2f2;
+    height: 23em;
+}
+
+div.modal-background div#user-input {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 0 5em 0 5em;
+}
+
+div.modal div#user-input button.modal-button {
     margin-left: 1em;
 }

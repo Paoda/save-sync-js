@@ -34,10 +34,8 @@ class DirectoryModal extends Modal {
 class SettingsModal extends Modal {
   constructor(reference) {
     super(reference);
+    
   }
-
-
-
 }
 
 
