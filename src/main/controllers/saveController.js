@@ -83,6 +83,8 @@ class SaveController {
               if (err) rej(err); 
               console.log(ref.sourcePath + " has been synced.");
               this._save(this.trackedSaves);
+
+              res();
             });
           });
         }

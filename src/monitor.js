@@ -49,3 +49,6 @@ class Monitor {
 }
 
 module.exports = Monitor;
+
+const monitor = new Monitor(30);
+monitor.run();
