@@ -1,4 +1,6 @@
 'use strict';
+const Monitor = require('../monitor');
+const monitor = new Monitor();
 
 const createHeaderButtons = () =>  {
   const close = document.querySelector('header div.window-icons i.fa-window-close');
@@ -19,29 +21,37 @@ const createHeaderButtons = () =>  {
 }
 
 const connectButtons = () => {
-  const monitorBtn = document.querySelector('button#monitor');
-  const directoryBtn = document.querySelector('button#directories');
-  const settingsBtn = document.querySelector('button#settings');
+  const monBtn = document.querySelector('button#monitor');
+  const dirBtn = document.querySelector('button#directories');
+  const settBtn = document.querySelector('button#settings');
   
-  console.log(monitorBtn);
-  console.log(directoryBtn);
-  console.log(settingsBtn);
-  connectModals();
+  const docModal = new Modal(document.querySelector('div.modal#directory-modal'));
+  const settModal = new Modal(document.querySelector('div.modal#settings-modal'));
+
+
+  monBtn.onclick = () => {
+    console.log("Monitor Button Pressed.");
+
+    if (monBtn.innerHTML === "Start Monitor") {
+      monBtn.innerHTML = "Stop Monitor";
+      monitor.run();
+    } else {
+      monBtn.innerHTML = "Start Monitor";
+      monitor.stop();
+    }
+  }
+
+  dirBtn.onclick = () => {
+    console.log("Directory Button Pressed.");
+    docModal.toggle();
+  }
+
+
+  settBtn.onclick = () => {
+    console.log ("Settings Button Pressed");
+    settModal.toggle();
+  }
 }
-
-const connectModals = () => {
-  const documentModal = new Modal(document.querySelector('div.modal#directory-modal'));
-  const settingsModal = new Modal(document.querySelector('div.modal#settings-modal'));
-
-
-  console.log(documentModal);
-  console.log(settingsModal);
-}
-
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
   createHeaderButtons();

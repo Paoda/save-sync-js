@@ -6,7 +6,7 @@ class Monitor {
     this.inProgress = false;
     this.interval = interval || 360 // Default
 
-    const handleSuicide = signal => {
+    this.handleSuicide = signal => {
       console.warn(`Save Sync has recieved ${signal}`);
 
       const waitUntilReady = async () => {
@@ -22,8 +22,8 @@ class Monitor {
       waitUntilReady();
     }
 
-    process.on('SIGINT', handleSuicide);
-    process.on('SIGTERM', handleSuicide)
+    process.on('SIGINT', this.handleSuicide);
+    process.on('SIGTERM', this.handleSuicide)
   }
 
   sleep(sec) {
@@ -42,7 +42,10 @@ class Monitor {
       await this.sleep(this.interval);
     }
   }
+
+  stop() {
+    this.handleSuicide();
+  }
 }
 
-const monitor = new Monitor(parseFloat(process.argv[2]));
-monitor.run();
+module.exports = Monitor;

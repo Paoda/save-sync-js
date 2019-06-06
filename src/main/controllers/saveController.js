@@ -105,15 +105,6 @@ class SaveController {
         res();
       })
     })
-
-
-    return new Promise((res, rej) => {
-      fse.rmdir(this.trackedSaves[path].clonePath, err => {
-        if (err) rej(err);
-
-      })
-
-    })
   }
 
   _save(newTrackedSaves) {
@@ -140,7 +131,6 @@ class SaveController {
         }))
       })
     })
-    
   }
 
   _generateUUID() {
