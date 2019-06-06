@@ -5,10 +5,10 @@ const settings = new SettingsController();
 
 class SaveController {
   constructor() {
-    const canLoadData = this._createSavePath();
+    this.canLoadData = this._createSavePath();
 
     this.trackedSaves = {};
-    if (canLoadData) this.trackedSaves = this.getReferences();
+    if (this.canLoadData) this.trackedSaves = this.getReferences();
   }
 
   add(path) {

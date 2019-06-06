@@ -2,6 +2,12 @@ class Modal {
   constructor(ref) {
     this.ref = ref;
     this.displayed = false;
+
+    this.ref.onclick = e => {
+      console.log(e);
+      
+      if (this.displayed && e.target.className === 'modal') this.hide();
+    }
   }
 
   hide() {
