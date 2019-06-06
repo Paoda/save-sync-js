@@ -12,8 +12,10 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.8.2",
+    "@types/fs-extra": "^7.0.0",
     "commander": "^2.20.0",
     "electron": "^5.0.2",
-    "electron-reload": "^1.4.0"
+    "electron-reload": "^1.4.0",
+    "fs-extra": "^8.0.1"
   }
 }

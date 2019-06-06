@@ -9,6 +9,11 @@
       "request": "launch",
       "name": "Launch Monitor",
       "program": "${workspaceFolder}/src/monitor.js"
+    }, {
+      "type": "node",
+      "request": "launch",
+      "name": "Write a GUI",
+      "program": "${workspaceFolder}/src/main/test.js"
     }
   ]
 }
