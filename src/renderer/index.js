@@ -11,7 +11,7 @@ class DirectoryModal extends Modal {
     this.saves = new SaveController();
   }
 
-  //Get and display directories for pop up window
+  //Get display directories for popup window
   getDirectories() {
 
     let trackedDirs = {};
@@ -20,12 +20,32 @@ class DirectoryModal extends Modal {
     this.showDirectories(trackedDirs);
   }
 
+  // Display directories from .getDirectories
   showDirectories(trackedDirs) {
-    console.log(trackedDirs);
+    const createHeader = (table) => {
 
+        // First Delete Everything
+        while(table.firstChild) table.removeChild(table.firstChild);
+  
+        const row = document.createElement('tr');
+        const thLoc = document.createElement('th');
+        thLoc.innerHTML = "Location";
+  
+        const thTime = document.createElement('th');
+        thTime.innerHTML = "Last Updated";
+  
+        row.appendChild(thLoc);
+        row.appendChild(thTime);
+  
+        table.appendChild(row);
+    }
+
+    const table = document.querySelector('div.modal-background div#directories-list table');
+    createHeader(table);
+
+    // loop through object
     for (let key in trackedDirs) {
       if (trackedDirs.hasOwnProperty(key)) {
-        const table = document.querySelector('div.modal-background div#directories-list table');
         const row = document.createElement('tr');
         const tdLoc = document.createElement('td');
         tdLoc.innerHTML = trackedDirs[key].sourcePath;
@@ -40,20 +60,12 @@ class DirectoryModal extends Modal {
     }
   }
 
-  addDirectory(path) {
-    this.saves.add(path);
+  async addDirectory(path) {
+    await this.saves.add(path);
   }
 
-  removeDirectories(path) {
-    this.saves.remove(path);
-  }
-}
-
-//Create Settings modal
-class SettingsModal extends Modal {
-  constructor(reference) {
-    super(reference);
-    
+  async removeDirectories(path) {
+    await this.saves.remove(path);
   }
 }
 
@@ -81,8 +93,20 @@ const connectButtons = () => {
   const dirBtn = document.querySelector('button#directories');
   const settBtn = document.querySelector('button#settings');
   
+  const addBtn = document.querySelector('div.modal-background button#dir-input-add');
+  const rmBtn = document.querySelector('div.modal-background button#dir-input-remove');
+
   const dirModal = new DirectoryModal(document.querySelector('div.modal#directory-modal'));
-  const settModal = new Modal(document.querySelector('div.modal#settings-modal'));
+
+  addBtn.onclick = () => {
+    const text = document.querySelector('div.modal-background div#user-input input.modal-text').value;
+    dirModal.addDirectory(text).then(() => dirModal.getDirectories());
+  }
+
+  rmBtn.onclick = () => {
+    const text = document.querySelector('div.modal-background div#user-input input.modal-text').value;
+    dirModal.removeDirectories(text).then(() => dirModal.getDirectories());
+  }
 
   monBtn.onclick = () => {
     console.log("Monitor Button Pressed.");
@@ -91,8 +115,7 @@ const connectButtons = () => {
       monBtn.innerHTML = "Stop Monitor";
       monitor.run();
     } else {
-      monBtn.innerHTML = "Start Monitor";
-      monitor.stop();
+      monitor.stop("UI Interrupt").then(() => monBtn.innerHTML = "Start Monitor");
     }
   }
 
@@ -102,10 +125,11 @@ const connectButtons = () => {
     dirModal.getDirectories();
   }
 
-
   settBtn.onclick = () => {
     console.log ("Settings Button Pressed");
-    settModal.toggle();
+    const modal = new Modal(document.querySelector('div.modal#settings-modal'));
+
+    modal.toggle();
   }
 }
 

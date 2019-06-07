@@ -13,6 +13,8 @@ class SaveController {
 
   add(path) {
     // Add a save
+    if (path.charAt(path.length - 1) === "/") path = path.slice(0, -1);
+    
     const cloneHome = this.saveClonePath + settings.slash + this._generateUUID();
     const copyRoot = cloneHome + settings.slash + path.match(/\w+$/g)[0]
     this.trackedSaves[path] = {
@@ -27,13 +29,13 @@ class SaveController {
 
     fs.mkdirSync(cloneHome); // Generate Location with UUID
     fs.mkdirSync(copyRoot); //Make sure Root Folder is there. 
-
+    
     return new Promise((res, rej) => {
       fse.copy(path, copyRoot, { recursive: true }, err => {
         if (err) rej(err);
         this._save(this.trackedSaves);
-
-        console.log(path + "has been backed up.")
+        
+        console.log(path + " has been backed up.")
         res();
       })
     })

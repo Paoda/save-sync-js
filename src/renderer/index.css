@@ -8,7 +8,6 @@
     --cross-color: darkred;
 }
 
-
 @font-face {
     font-family: "OpenSans";
     src: url("../assets/fonts/OpenSans-Regular.ttf") format("truetype");
@@ -157,7 +156,6 @@ div.modal-background h3 {
     margin: 0.5em 0 0.5em 1em;
 }
 
-
 div.modal-background div#directories-list {
     background-color: #f2f2f2;
     height: 23em;
@@ -172,7 +170,6 @@ div.modal-background div#directories-list table td {
     overflow-y: hidden;
     text-align: center;
 }
-
 
 div.modal-background div#user-input {
     flex-grow: 1;

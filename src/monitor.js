@@ -6,20 +6,27 @@ class Monitor {
     this.inProgress = false;
     this.interval = interval || 360 // Default
 
-    this.handleSuicide = signal => {
-      console.warn(`Save Sync has recieved ${signal}`);
+    const waitUntilReady = async (cb) => {
+      while (this.inProgress) {
+        console.log("Waiting for backup to finish.");
 
-      const waitUntilReady = async () => {
-        while (this.inProgress) {
-          console.log("Waiting for backup to finish.");
-
-          await this.sleep(3);
-        }
-
-        process.exit(0);
+        await this.sleep(3);
       }
 
-      waitUntilReady();
+      cb()
+    }
+
+    this.handleSuicide = signal => {
+      return new Promise((res, rej) => {
+        console.warn(`Save Sync has recieved ${signal}`);
+        waitUntilReady(() => {
+          res();
+          // process.exit(0);
+        });
+
+      });
+
+
     }
 
     process.on('SIGINT', this.handleSuicide);
@@ -31,6 +38,7 @@ class Monitor {
   }
 
   async run() {
+    console.log("Monitor Start");
     const saveController = new SaveController();
 
     while (true) {
@@ -43,12 +51,11 @@ class Monitor {
     }
   }
 
-  stop() {
-    this.handleSuicide();
+  stop(msg) {
+    return new Promise((res, rej) => {
+      this.handleSuicide(msg).then(() => res());
+    });
   }
 }
 
 module.exports = Monitor;
-
-const monitor = new Monitor(30);
-monitor.run();
