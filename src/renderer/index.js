@@ -9,27 +9,43 @@ class DirectoryModal extends Modal {
 
     const SaveController = require('../main/controllers/saveController');
     this.saves = new SaveController();
-
   }
 
   //Get and display directories for pop up window
   getDirectories() {
+
     let trackedDirs = {};
     if (this.saves.canLoadData) trackedDirs = this.saves.getReferences();
 
-    return trackedDirs;
+    this.showDirectories(trackedDirs);
   }
 
-  showDirectories() {
+  showDirectories(trackedDirs) {
+    console.log(trackedDirs);
+
+    for (let key in trackedDirs) {
+      if (trackedDirs.hasOwnProperty(key)) {
+        const table = document.querySelector('div.modal-background div#directories-list table');
+        const row = document.createElement('tr');
+        const tdLoc = document.createElement('td');
+        tdLoc.innerHTML = trackedDirs[key].sourcePath;
     
+        const tdTime = document.createElement('td');
+        tdTime.innerHTML = trackedDirs[key].lastUpdated;
+    
+        row.appendChild(tdLoc);
+        row.appendChild(tdTime);
+        table.appendChild(row);
+      }
+    }
   }
 
-  addDirectories() {
-
+  addDirectory(path) {
+    this.saves.add(path);
   }
 
-  removeDirectories() {
-
+  removeDirectories(path) {
+    this.saves.remove(path);
   }
 }
 
@@ -83,6 +99,7 @@ const connectButtons = () => {
   dirBtn.onclick = () => {
     console.log("Directory Button Pressed.");
     dirModal.toggle();
+    dirModal.getDirectories();
   }
 
 

@@ -161,7 +161,18 @@ div.modal-background h3 {
 div.modal-background div#directories-list {
     background-color: #f2f2f2;
     height: 23em;
+    overflow-x: auto;
 }
+
+div.modal-background div#directories-list table {
+    width: 100%;
+}
+
+div.modal-background div#directories-list table td {
+    overflow-y: hidden;
+    text-align: center;
+}
+
 
 div.modal-background div#user-input {
     flex-grow: 1;
