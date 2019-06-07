@@ -2,6 +2,7 @@
 const Monitor = require('../monitor');
 const monitor = new Monitor();
 
+//Create modal for directories
 class DirectoryModal extends Modal {
   constructor(reference) {
     super(reference);
@@ -11,6 +12,7 @@ class DirectoryModal extends Modal {
 
   }
 
+  //Get and display directories for pop up window
   getDirectories() {
     let trackedDirs = {};
     if (this.saves.canLoadData) trackedDirs = this.saves.getReferences();
@@ -31,6 +33,7 @@ class DirectoryModal extends Modal {
   }
 }
 
+//Create Settings modal
 class SettingsModal extends Modal {
   constructor(reference) {
     super(reference);
@@ -38,7 +41,7 @@ class SettingsModal extends Modal {
   }
 }
 
-
+//Create and operate header buttons such as closing the program and minimizing
 const createHeaderButtons = () =>  {
   const close = document.querySelector('header div.window-icons i.fa-window-close');
   const minimize = document.querySelector('header div.window-icons i.fa-window-minimize');
@@ -56,6 +59,7 @@ const createHeaderButtons = () =>  {
   }
 }
 
+//Connect buttons to modals, and call to start monitor whem button is clicked
 const connectButtons = () => {
   const monBtn = document.querySelector('button#monitor');
   const dirBtn = document.querySelector('button#directories');
@@ -88,6 +92,7 @@ const connectButtons = () => {
   }
 }
 
+//Create header and connect buttons when program is loaded
 document.addEventListener('DOMContentLoaded', () => {
   createHeaderButtons();
   connectButtons();

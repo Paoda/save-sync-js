@@ -1,3 +1,5 @@
+//Defined class modal which can be toggled on click and by button
+//Also handles destruction of the modal after use
 class Modal {
   constructor(ref) {
     this.ref = ref;
