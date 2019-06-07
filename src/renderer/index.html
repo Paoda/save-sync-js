@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!--Set tite and import fontawesome and CSS-->
     <meta charset="UTF-8">
     <title>SaveSync</title>
     <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
@@ -8,6 +9,7 @@
   </head>
   <body>
     <div class="app">
+      <!--Create header for the buttons on top-->
       <header>
         <div class="title"><span>Save Sync</span></div>
         <div class="window-icons">
@@ -15,9 +17,11 @@
           <i class="fas fa-window-close"></i>
         </div>
       </header>
+      <!--Big checkmark and message-->
       <div class="checkcont"> <i class="fas fa-check"></i>
         <h1>Save Synced!</h1>
       </div>
+      <!--Create and connect buttons to stylesheet-->
       <div class="buttoncontainer">
         <button class="button" id="monitor">Start Monitor</button>
         <button class="button" id="directories">Tracked Directories</button>
@@ -25,6 +29,7 @@
       </div>
     </div>
 
+    <!--Create modals for pop up menus when buttons are clicked-->
     <div class="modal" id="directory-modal">
       <div class="modal-background">
         <h3>Directories</h3>
