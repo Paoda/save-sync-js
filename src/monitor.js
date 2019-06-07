@@ -4,7 +4,7 @@ const SaveController = require('./main/controllers/saveController');
 class Monitor {
   constructor(interval) {
     this.inProgress = false;
-    this.interval = interval || 360 // Default
+    this.interval = interval || 3600 // Default
 
     const waitUntilReady = async (cb) => {
       while (this.inProgress) {
